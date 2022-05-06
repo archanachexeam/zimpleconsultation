@@ -48,7 +48,7 @@ class Categories extends CI_Controller {
 		$data['loginRedirect']=base_url().'medicines/Categories/insert';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('masters/categories/categories',$data);
+		$this->load->view('master/categories/categories',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
@@ -88,7 +88,7 @@ class Categories extends CI_Controller {
 		$data['loginRedirect']=base_url().'medicines/Categories/update';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('masters/categories/editCategory',$data);
+		$this->load->view('medicines/categories/editCategory',$data);
 		$this->load->view('admin/templates/footer');
 	}
 

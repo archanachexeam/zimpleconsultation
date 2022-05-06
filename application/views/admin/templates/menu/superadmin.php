@@ -87,18 +87,43 @@
         <span class="side-menu__label"><?php echo $this->lang->line('Diseases'); ?></span>
       </a>
     </li>
+    
     <li class="slide">
       <a class="side-menu__item" href="<?php echo base_url().'masters/Medicines/'?>">
         <i class="side-menu__icon fa fa-plus-square"></i>
         <span class="side-menu__label"><?php echo $this->lang->line('Medicines'); ?></span>
       </a>
-    </li>
+      
+        <ul>
+          <li class="slide">
+            <a class="side-menu__item" href="<?php echo base_url().'index.php/masters/Units/'?>">
+            <i class="side-menu__icon fa fa-plus-circle"></i>
+            <span class="side-menu__label"><?php echo $this->lang->line('Units'); ?></span>
+          </a>
+          </li>
+          <li class="slide">
+            <a class="side-menu__item" href="<?php echo base_url().'index.php/masters/shelves/'?>">
+            <i class="side-menu__icon fa fa-plus-circle"></i>
+            <span class="side-menu__label"><?php echo $this->lang->line('Shelves'); ?></span>
+          </a>
+          </li>
+          <li class="slide">
+          <a class="side-menu__item" href="<?php echo base_url().'index.php/medicines/Categories/'?>">
+            <i class="side-menu__icon fa fa-plus-circle"></i>
+            <span class="side-menu__label"><?php echo $this->lang->line('Medicine Catagory'); ?></span>
+          </a>
+          </li>
+      </ul>
+   </li>
+  
     <li class="slide">
       <a class="side-menu__item" href="<?php echo base_url().'masters/Labtests/'?>">
         <i class="side-menu__icon fa fa-flask"></i>
         <span class="side-menu__label"><?php echo $this->lang->line('LabTests'); ?></span>
       </a>
     </li>
+    
+  
     <!-- <li class="slide">
       <a class="side-menu__item" href="<?php //echo base_url().'masters/Pharmacies/'?>">
         <i class="side-menu__icon fa fa-sign-in"></i>

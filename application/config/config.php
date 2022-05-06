@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
- $config['base_url'] = 'http://doctorbooking.hexeam.org/';
-// $config['base_url'] = 'http://localhost/ZimpleConsultation/';
+//  $config['base_url'] = 'http://doctorbooking.hexeam.org/';
+ $config['base_url'] = 'http://localhost/zimpleconsultation';
 
 
 /*

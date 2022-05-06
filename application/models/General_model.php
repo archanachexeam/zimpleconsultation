@@ -112,7 +112,7 @@ class General_Model extends CI_Model {
 	}
 	
 
-	function get_combined_list($id_field_name,$value_field_name1="",$value_field_name2="",$value_field_name3="",$table_name,$init_list=array(),$where=array()){
+	function get_combined_list($id_field_name="",$value_field_name1="",$value_field_name2="",$value_field_name3="",$table_name="",$init_list=array(),$where=array()){
 
 		$this->db->select($id_field_name);
 
@@ -142,7 +142,7 @@ class General_Model extends CI_Model {
 		}
 	}
 
-	function get_combined_list_two($id_field_name,$value_field_name1="",$value_field_name2="",$table_name,$init_list=array(),$where=array()){
+	function get_combined_list_two($id_field_name="",$value_field_name1="",$value_field_name2="",$table_name="",$init_list=array(),$where=array()){
 
 		$this->db->select($id_field_name);
 
@@ -168,7 +168,7 @@ class General_Model extends CI_Model {
 		}
 	}
 
-	function get_combined_list_two_hiphen($id_field_name,$value_field_name1="",$value_field_name2="",$table_name,$init_list=array(),$where=array()){
+	function get_combined_list_two_hiphen($id_field_name="",$value_field_name1="",$value_field_name2="",$table_name="",$init_list=array(),$where=array()){
 
 		$this->db->select($id_field_name);
 
@@ -194,7 +194,7 @@ class General_Model extends CI_Model {
 		}
 	}
 
-	function get_combined_list_four($id_field_name,$value_field_name1="",$value_field_name2="",$value_field_name3="",$value_field_name4="",$table_name,$init_list=array(),$where=array(),$where_in_field = null, $where_in = array()){
+	function get_combined_list_four($id_field_name="",$value_field_name1="",$value_field_name2="",$value_field_name3="",$value_field_name4="",$table_name="",$init_list=array(),$where=array(),$where_in_field = null, $where_in = array()){
 
 		$this->db->select($id_field_name);
 

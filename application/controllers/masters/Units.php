@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Categories extends CI_Controller {
+class Units extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -38,115 +38,119 @@ class Categories extends CI_Controller {
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$where = array('isDeleted' => 0);
-		$data['categories'] =$this->general_model->get('mst_medicine_categories',$where);
+		$data['units'] =$this->general_model->get('mst_units',$where);
 
-		$data['currentMenu'] = 'Medicine Categories';
-		$data['pageHeading'] = 'Medicine Categories';
-		$data['singleHeading'] = 'Medicine Categories';
-		$data['pageTitle'] = "Medicine Categories | ".HEX_APPLICATION_NAME;
+		$data['currentMenu'] = 'Units';
+		$data['pageHeading'] = 'Units';
+		$data['singleHeading'] = 'Units';
+		$data['pageTitle'] = "Units | ".HEX_APPLICATION_NAME;
 
-		$data['loginRedirect']=base_url().'medicines/Categories/insert';
+		$data['loginRedirect']=base_url().'masters/Units/insert';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('masters/categories/categories',$data);
+		$this->load->view('masters/units/units',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
-	public function insert(){
+	public function insert()
+    {
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
-		$this->form_validation->set_rules('medicineCategoryName','Category Name','required');
+		$this->form_validation->set_rules('unitName','unitName','required');
 
 		if ($this->form_validation->run() == FALSE) {	
 			$this->session->set_flashdata('registerMessage',validation_errors(),':old:');
-			redirect(base_url().'medicines/categories');
+			redirect(base_url().'masters/units');
 		}else{
 			$data = array(
-				'medicineCategoryName'			=> $this->input->post('medicineCategoryName'),
-				'isActive'						=> 1
+				'unitName'			=> $this->input->post('unitName'),
+                'unitSymbol'			=> $this->input->post('unitSymbol'),
+				'isActive'						=> 1,
+                'iSDeleted'						=> 0
 			);
-			$this->general_model->insert('mst_medicine_categories',$data);
+			$this->general_model->insert('mst_units',$data);
 			$this->session->set_flashdata('registerMessage','Added Successfully',':old:');
-			redirect(base_url().'medicines/categories');
+			redirect(base_url().'masters/units');
 		}
 	}
 
-	public function edit($medicineCategoryId = 0){
+	public function edit($unitId = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
-		$where = array('mst_medicine_categories.isDeleted' => 0);
-		$data['categories'] =$this->general_model->get('mst_medicine_categories',$where);
+		$where = array('mst_units.isDeleted' => 0);
+		$data['units'] =$this->general_model->get('mst_units',$where);
 
-		$whereSingleCategory = array('mst_medicine_categories.medicineCategoryId' => $medicineCategoryId);
-		$data['singlecategory'] =$this->general_model->get('mst_medicine_categories',$whereSingleCategory);
+		$whereSingleCategory = array('mst_units.unitId' => $unitId);
+		$data['singleUnit'] =$this->general_model->get('mst_units',$whereSingleCategory);
 
-		$data['currentMenu'] = 'Medicine Categories';
-		$data['pageHeading'] = 'Medicine Categories';
-		$data['singleHeading'] = 'Medicine Categories';
-		$data['pageTitle'] = "Medicine Categories | ".HEX_APPLICATION_NAME;
+		$data['currentMenu'] = 'Units';
+		$data['pageHeading'] = 'Units';
+		$data['singleHeading'] = 'Units';
+		$data['pageTitle'] = "Units | ".HEX_APPLICATION_NAME;
 
-		$data['loginRedirect']=base_url().'medicines/Categories/update';
+		$data['loginRedirect']=base_url().'masters/units/update';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('masters/categories/editCategory',$data);
+		$this->load->view('masters/units/editUnit',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
 	public function update(){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
-		$this->form_validation->set_rules('medicineCategoryName','Department Name','required');
+		$this->form_validation->set_rules('unitName',' unitName','required');
 
 		if ($this->form_validation->run() == FALSE) {	
 			$this->session->set_flashdata('registerMessage',validation_errors(),':old:');
-			redirect(base_url().'medicines/categories');
+			redirect(base_url().'masters/units');
 		}else{
 			$data = array(
-				'medicineCategoryName'			=> $this->input->post('medicineCategoryName'),
+				'unitName'			=> $this->input->post('unitName'),
+                'unitSymbol'			=> $this->input->post('unitSymbol'),
 			);
 			$where = array(
-				'medicineCategoryId'	=> $this->input->post('medicineCategoryId')
+				'unitId'	=> $this->input->post('unitId')
 			);
-			$this->general_model->update('mst_medicine_categories',$data, $where);
+			$this->general_model->update('mst_units',$data, $where);
 			$this->session->set_flashdata('registerMessage','Updated Successfully',':old:');
-			redirect(base_url().'medicines/categories');
+			redirect(base_url().'masters/units');
 		}
 	}
 
-	public function delete($medicineCategoryId = 0){
+	public function delete($slotId = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(
 			'isDeleted'		=>	1
 		);
-		$where = array('medicineCategoryId' => $medicineCategoryId);
-		$this->general_model->update('mst_medicine_categories',$data, $where);
+		$where = array('unitId' => $slotId);
+		$this->general_model->update('mst_units',$data, $where);
 		$this->session->set_flashdata('registerMessage','Deleted Successfully',':old:');
-		redirect(base_url().'medicines/categories');
+		redirect(base_url().'masters/units');
 	}
 
-	public function makeactive($medicineCategoryId = 0){
+	public function makeactive($unitId = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(
 			'isActive'		=>	1
 		);
-		$where = array('medicineCategoryId' => $medicineCategoryId);
-		$this->general_model->update('mst_medicine_categories',$data, $where);
+		$where = array('unitId' => $unitId);
+		$this->general_model->update('mst_units',$data, $where);
 		$this->session->set_flashdata('registerMessage','Status Changed to Active',':old:');
-		redirect(base_url().'medicines/categories');
+		redirect(base_url().'masters/units');
 	}
 
-	public function makeinactive($medicineCategoryId = 0){
+	public function makeinactive($unitId = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(
 			'isActive'		=>	0
 		);
-		$where = array('medicineCategoryId' => $medicineCategoryId);
-		$this->general_model->update('mst_medicine_categories',$data, $where);
+		$where = array('unitId' => $unitId);
+		$this->general_model->update('mst_units',$data, $where);
 		$this->session->set_flashdata('registerMessage','Status Changed to Inactive',':old:');
-		redirect(base_url().'medicines/categories');
+		redirect(base_url().'masters/units');
 	}
 
 
