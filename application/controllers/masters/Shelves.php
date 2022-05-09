@@ -38,118 +38,115 @@ class Shelves extends CI_Controller {
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$where = array('isDeleted' => 0);
-		$data['shelves'] =$this->general_model->get('mst_shelves',$where);
+		$data['shelves'] =$this->general_model->get('mst_medicine_shelves',$where);
 
-		$data['currentMenu'] = 'Shelves';
-		$data['pageHeading'] = 'Shelves';
-		$data['singleHeading'] = 'Shelves';
-		$data['pageTitle'] = "Shelves | ".HEX_APPLICATION_NAME;
+		$data['currentMenu'] = 'Medicine Shelves';
+		$data['pageHeading'] = 'Medicine Shelves';
+		$data['singleHeading'] = 'Medicine Shelves';
+		$data['pageTitle'] = "Medicine Shelves | ".HEX_APPLICATION_NAME;
 
 		$data['loginRedirect']=base_url().'masters/Shelves/insert';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('masters/Shelves/Shelves',$data);
+		$this->load->view('masters/shelves/shelves',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
-	public function insert()
-    {
+	public function insert(){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
-		$this->form_validation->set_rules('shelveName','shelveName','required');
+		$this->form_validation->set_rules('medicineShelfName','Shelf Name','required');
 
 		if ($this->form_validation->run() == FALSE) {	
 			$this->session->set_flashdata('registerMessage',validation_errors(),':old:');
 			redirect(base_url().'masters/Shelves');
 		}else{
 			$data = array(
-				'shelveName'			=> $this->input->post('shelveName'),
-                'isActive'						=> 1,
-                'iSDeleted'						=> 0
+				'medicineShelfName'			=> $this->input->post('medicineShelfName'),
+				'isActive'						=> 1
 			);
-			$this->general_model->insert('mst_shelves',$data);
+			$this->general_model->insert('mst_medicine_shelves',$data);
 			$this->session->set_flashdata('registerMessage','Added Successfully',':old:');
-			redirect(base_url().'masters/shelves');
+			redirect(base_url().'masters/Shelves');
 		}
 	}
 
-	public function edit($shelveId = 0){
+	public function edit($medicineShelfId = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
-		$where = array('mst_shelves.isDeleted' => 0);
-		$data['shelves'] =$this->general_model->get('mst_shelves',$where);
+		$where = array('mst_medicine_shelves.isDeleted' => 0);
+		$data['shelves'] =$this->general_model->get('mst_medicine_shelves',$where);
 
-		$whereSingleCategory = array('mst_shelves.shelveId' => $shelveId);
-		$data['singleUnit'] =$this->general_model->get('mst_shelves',$whereSingleCategory);
+		$whereSingleShelf = array('mst_medicine_shelves.medicineShelfId' => $medicineShelfId);
+		$data['singleshelves'] =$this->general_model->get('mst_medicine_shelves',$whereSingleShelf);
 
-        $data['currentMenu'] = 'Shelves';
-		$data['pageHeading'] = 'Shelves';
-		$data['singleHeading'] = 'Shelves';
-		$data['pageTitle'] = "Shelves | ".HEX_APPLICATION_NAME;
+		$data['currentMenu'] = 'Medicine Shelves';
+		$data['pageHeading'] = 'Medicine Shelves';
+		$data['singleHeading'] = 'Medicine Shelves';
+		$data['pageTitle'] = "Medicine Shelves | ".HEX_APPLICATION_NAME;
 
-		$data['loginRedirect']=base_url().'masters/shelves/update';
+		$data['loginRedirect']=base_url().'masters/Shelves/update';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('masters/Shelves/editShelve',$data);
+		$this->load->view('masters/shelves/editShelves',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
 	public function update(){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
-		$this->form_validation->set_rules('shelveName',' shelveName','required');
+		$this->form_validation->set_rules('medicineShelfName','Shelf Name','required');
 
 		if ($this->form_validation->run() == FALSE) {	
 			$this->session->set_flashdata('registerMessage',validation_errors(),':old:');
-			redirect(base_url().'masters/shelves');
+			redirect(base_url().'masters/Shelves');
 		}else{
 			$data = array(
-				'shelveName'			=> $this->input->post('shelveName'),
-              
+				'medicineShelfName'			=> $this->input->post('medicineShelfName'),
 			);
 			$where = array(
-				'shelveId'	=> $this->input->post('shelveId')
+				'medicineShelfId'	=> $this->input->post('medicineShelfId')
 			);
-			$this->general_model->update('mst_shelves',$data, $where);
+			$this->general_model->update('mst_medicine_shelves',$data, $where);
 			$this->session->set_flashdata('registerMessage','Updated Successfully',':old:');
-			redirect(base_url().'masters/shelves');
+			redirect(base_url().'masters/Shelves');
 		}
 	}
 
-	public function delete($shelveId = 0){
+	public function delete($medicineShelfId = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(
 			'isDeleted'		=>	1
 		);
-		$where = array('shelveId' => $shelveId);
-		$this->general_model->update('mst_shelves',$data, $where);
+		$where = array('medicineShelfId' => $medicineShelfId);
+		$this->general_model->update('mst_medicine_shelves',$data, $where);
 		$this->session->set_flashdata('registerMessage','Deleted Successfully',':old:');
-		redirect(base_url().'masters/shelves');
+		redirect(base_url().'masters/Shelves');
 	}
 
-	public function makeactive($shelveId = 0){
+	public function makeactive($medicineShelfId = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(
 			'isActive'		=>	1
 		);
-		$where = array('shelvesId' => $shelveId);
-		$this->general_model->update('mst_shelves',$data, $where);
+		$where = array('medicineShelfId' => $medicineShelfId);
+		$this->general_model->update('mst_medicine_shelves',$data, $where);
 		$this->session->set_flashdata('registerMessage','Status Changed to Active',':old:');
-		redirect(base_url().'masters/shelves');
+		redirect(base_url().'masters/Shelves');
 	}
 
-	public function makeinactive($shelveId = 0){
+	public function makeinactive($medicineShelfId = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(
 			'isActive'		=>	0
 		);
-		$where = array('shelveId' => $shelveId);
-		$this->general_model->update('mst_shelves',$data, $where);
+		$where = array('medicineShelfId' => $medicineShelfId);
+		$this->general_model->update('mst_medicine_shelves',$data, $where);
 		$this->session->set_flashdata('registerMessage','Status Changed to Inactive',':old:');
-		redirect(base_url().'masters/shelves');
+		redirect(base_url().'masters/Shelves');
 	}
 
 

@@ -13,8 +13,18 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class="form-label">Shelf Name *</label>
+								<label class="form-label">Medicine Name *</label>
 								<input type="text" class="form-control" name="medicineShelfName" placeholder="Shelf Name" required="required">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="form-label">Medicine Generic Name *</label>
+								<?php 
+	                $designationsOptionsJs = 'id="medicineName" class="form-control medicineName select2-show-search"';
+	                echo form_dropdown('medicineName', $medicineGenericName, '', $designationsOptionsJs);
+	              ?>
+	              <input type="hidden" name="doctor" id="selectedDoctor" value="">
 							</div>
 						</div>
 					

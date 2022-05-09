@@ -3,7 +3,7 @@
 		<div class="col-md-12 col-lg-12">
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title"><?php echo "Add New ".$pageHeading;?></h3>
+					<h3 class="card-title"><?php echo "Edit ".$pageHeading;?></h3>
 				</div>
 				<div class="card-body">
 					<?php 
@@ -14,16 +14,17 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class="form-label">Shelf Name *</label>
-								<input type="text" class="form-control" name="medicineShelfName" placeholder="Shelf Name" required="required">
+								<input type="text" class="form-control" name="medicineShelfName" value="<?php echo $shelves[0]['medicineShelfName'];?>" placeholder="Shelf Name" required="required">
+								<input type="hidden" name="medicineShelfId" value="<?php echo $shelves[0]['medicineShelfId'];?>">
 							</div>
 						</div>
-					
+						
 					</div>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group">
 								<div class="form-label"></div>
-								<input type="submit" class="btn btn-primary" name="" value="Submit">
+								<input type="submit" class="btn btn-primary" name="" value="Update">
 							</div>
 						</div>
 					</div>
@@ -51,7 +52,7 @@
 							<thead>
 								<tr>
 									<th class="wd-15p">Shelf Name</th>
-								    <th class="wd-10p">Status</th>
+									<th class="wd-10p">Status</th>
 									<th class="wd-25p">Actions</th>
 								</tr>
 							</thead>
@@ -62,6 +63,7 @@
 								?>
 											<tr>
 												<td><?php echo $shelve['medicineShelfName'];?></td>
+											
 												<td>
 		                  	<?php 
 													if($shelve['isActive'] == 1){
@@ -87,7 +89,7 @@
 												<?php
 													}
 												?>
-		                  	                    <a href="<?php echo base_url()?>masters/shelves/edit/<?php echo $shelve['medicineShelfId'];?>" class="btn btn-success waves-effect waves-light width-md" title="Edit"> 
+		                  	                <a href="<?php echo base_url()?>masters/shelves/edit/<?php echo $shelve['medicineShelfId'];?>" class="btn btn-success waves-effect waves-light width-md" title="Edit"> 
 													<i class="icon icon-note" data-toggle="tooltip" title="Edit"></i> 
 												</a>
 												<a href="<?php echo base_url()?>masters/shelves/delete/<?php echo $shelve['medicineShelfId'];?>" class="btn btn-danger waves-effect waves-light width-md" title="Delete"> 

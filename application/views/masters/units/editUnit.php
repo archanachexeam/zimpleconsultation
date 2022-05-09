@@ -14,14 +14,14 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class="form-label">Unit Name *</label>
-								<input type="text" class="form-control" name="unitName" value="<?php echo $singleUnit[0]['unitName'];?>" placeholder="Unit Name" required="required">
-								<input type="hidden" name="unitId" value="<?php echo $singleUnit[0]['unitId'];?>">
+								<input type="text" class="form-control" name="medicineUnitName" value="<?php echo $units[0]['medicineUnitName'];?>" placeholder="Unit Name" required="required">
+								<input type="hidden" name="medicineUnitId" value="<?php echo $units[0]['medicineUnitId'];?>">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class="form-label">Unit Symbol *</label>
-								<input type="text" class="form-control" name="unitSymbol" value="<?php echo $singleUnit[0]['unitSymbol'];?>" placeholder="Unit Symbol" required="required">
+								<input type="text" class="form-control" name="medicineUnitSF" value="<?php echo $units[0]['medicineUnitSF'];?>" placeholder="Unit Symbol" required="required">
 							</div>
 						</div>
 					</div>
@@ -68,8 +68,8 @@
 										foreach($units as $unit){
 								?>
 											<tr>
-												<td><?php echo $unit['unitName'];?></td>
-												<td><?php echo $unit['unitSymbol'];?></td>
+												<td><?php echo $unit['medicineUnitName'];?></td>
+												<td><?php echo $unit['medicineUnitSF'];?></td>
 												<td>
 		                  	<?php 
 													if($unit['isActive'] == 1){
@@ -83,22 +83,22 @@
 												<?php 
 													if($unit['isActive'] == 1){
 												?>
-														<a href="<?php echo base_url()?>masters/units/makeinactive/<?php echo $unit['unitId'];?>" class="btn btn-danger waves-effect waves-light width-md"> 
+														<a href="<?php echo base_url()?>masters/units/makeinactive/<?php echo $unit['medicineUnitId'];?>" class="btn btn-danger waves-effect waves-light width-md"> 
 															<i class="icon icon-dislike" data-toggle="tooltip" title="Make Inactive"></i> 
 														</a>
 												<?php
 													}else{
 												?>
-														<a href="<?php echo base_url()?>masters/units/makeactive/<?php echo $unit['unitId'];?>" class="btn btn-success waves-effect waves-light width-md"> 
+														<a href="<?php echo base_url()?>masters/units/makeactive/<?php echo $unit['medicineUnitId'];?>" class="btn btn-success waves-effect waves-light width-md"> 
 															<i class="icon icon-like" data-toggle="tooltip" title="Make Active"></i> 
 														</a>
 												<?php
 													}
 												?>
-		                  	                <a href="<?php echo base_url()?>masters/units/edit/<?php echo $unit['unitId'];?>" class="btn btn-success waves-effect waves-light width-md" title="Edit"> 
+		                  	                <a href="<?php echo base_url()?>masters/units/edit/<?php echo $unit['medicineUnitId'];?>" class="btn btn-success waves-effect waves-light width-md" title="Edit"> 
 													<i class="icon icon-note" data-toggle="tooltip" title="Edit"></i> 
 												</a>
-												<a href="<?php echo base_url()?>masters/units/delete/<?php echo $unit['unitId'];?>" class="btn btn-danger waves-effect waves-light width-md" title="Delete"> 
+												<a href="<?php echo base_url()?>masters/units/delete/<?php echo $unit['medicineUnitId'];?>" class="btn btn-danger waves-effect waves-light width-md" title="Delete"> 
 													<i class="icon icon-trash" data-toggle="tooltip" title="Delete"></i> 
 												</a>
 		                  </td>

@@ -13,8 +13,8 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class="form-label">Shelf Name *</label>
-								<input type="text" class="form-control" name="medicineShelfName" placeholder="Shelf Name" required="required">
+								<label class="form-label">Medicine Type  Name *</label>
+								<input type="text" class="form-control" name="medicineTypeName" placeholder="Medicine Type Name" required="required">
 							</div>
 						</div>
 					
@@ -50,21 +50,21 @@
 						<table id="example" class="table table-striped table-bordered text-nowrap w-100">
 							<thead>
 								<tr>
-									<th class="wd-15p">Shelf Name</th>
+									<th class="wd-15p">Medicine Type Name</th>
 								    <th class="wd-10p">Status</th>
 									<th class="wd-25p">Actions</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
-									if(is_array($shelves)){
-										foreach($shelves as $shelve){
+									if(is_array($types)){
+										foreach($types as $type){
 								?>
 											<tr>
-												<td><?php echo $shelve['medicineShelfName'];?></td>
+												<td><?php echo $type['medicineTypeName'];?></td>
 												<td>
 		                  	<?php 
-													if($shelve['isActive'] == 1){
+													if($type['isActive'] == 1){
 														echo "Active";
 													}else{
 														echo "Inactive";
@@ -73,24 +73,24 @@
 		                  </td>
 											<td>
 												<?php 
-													if($shelve['isActive'] == 1){
+													if($type['isActive'] == 1){
 												?>
-														<a href="<?php echo base_url()?>masters/shelves/makeinactive/<?php echo $shelve['medicineShelfId'];?>" class="btn btn-danger waves-effect waves-light width-md"> 
+														<a href="<?php echo base_url()?>medicines/Types/makeinactive/<?php echo $type['medicineTypeId'];?>" class="btn btn-danger waves-effect waves-light width-md"> 
 															<i class="icon icon-dislike" data-toggle="tooltip" title="Make Inactive"></i> 
 														</a>
 												<?php
 													}else{
 												?>
-														<a href="<?php echo base_url()?>masters/shelves/makeactive/<?php echo $shelve['medicineShelfId'];?>" class="btn btn-success waves-effect waves-light width-md"> 
+														<a href="<?php echo base_url()?>medicines/Types/makeactive/<?php echo $type['medicineTypeId'];?>" class="btn btn-success waves-effect waves-light width-md"> 
 															<i class="icon icon-like" data-toggle="tooltip" title="Make Active"></i> 
 														</a>
 												<?php
 													}
 												?>
-		                  	                    <a href="<?php echo base_url()?>masters/shelves/edit/<?php echo $shelve['medicineShelfId'];?>" class="btn btn-success waves-effect waves-light width-md" title="Edit"> 
+		                  	                    <a href="<?php echo base_url()?>medicines/Types/edit/<?php echo $type['medicineTypeId'];?>" class="btn btn-success waves-effect waves-light width-md" title="Edit"> 
 													<i class="icon icon-note" data-toggle="tooltip" title="Edit"></i> 
 												</a>
-												<a href="<?php echo base_url()?>masters/shelves/delete/<?php echo $shelve['medicineShelfId'];?>" class="btn btn-danger waves-effect waves-light width-md" title="Delete"> 
+												<a href="<?php echo base_url()?>medicines/Types/delete/<?php echo $type['medicineTypeId'];?>" class="btn btn-danger waves-effect waves-light width-md" title="Delete"> 
 													<i class="icon icon-trash" data-toggle="tooltip" title="Delete"></i> 
 												</a>
 		                  </td>

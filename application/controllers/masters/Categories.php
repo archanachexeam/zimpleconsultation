@@ -48,7 +48,7 @@ class Categories extends CI_Controller {
 		$data['loginRedirect']=base_url().'medicines/Categories/insert';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('master/categories/categories',$data);
+		$this->load->view('masters/categories/categories',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
