@@ -429,8 +429,7 @@ class General_Model extends CI_Model {
 		$this->db->select('mst_medicine_categories.* ');
 		$this->db->select('mst_medicine_types.* ');
 		 $this->db->select('mst_medicine_manufacturers.*');
-		// $this->db->select('mst_slots.slotName');
-		// $this->db->select('sys_bookingstatus.bookingStatusName');
+		
 
 
 		$this->db->join('mst_medicine_units', 'mst_medicines.medicineUnit = mst_medicine_units.medicineUnitId', 'left');
@@ -438,8 +437,7 @@ class General_Model extends CI_Model {
 		 $this->db->join('mst_medicine_categories', 'mst_medicines.medicineCategory = mst_medicine_categories.medicineCategoryId  ', 'left');
 		$this->db->join('mst_medicine_types', 'mst_medicines.medicineType = mst_medicine_types.medicineTypeId ', 'left');
 		$this->db->join('mst_medicine_manufacturers', 'mst_medicines.medicineManufacturer = mst_medicine_manufacturers.manufacturerId', 'left');
-		// $this->db->join('mst_slots', 'link_doctor_slots.slot = mst_slots.slotId', 'left');
-		// $this->db->join('sys_bookingstatus', 'trn_bookings.bookingStatus = sys_bookingstatus.bookingStatusId', 'left');
+		
 		
 
 		$rs = $this->db->get_where('mst_medicines', $where);

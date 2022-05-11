@@ -40,7 +40,7 @@ class medicineDetails extends CI_Controller {
 		// $where = array('isDeleted' => 0);
 		$where = array(
 			
-			'mst_medicines.isDeleted' 			=> 0
+			'mst_medicines.isDeleted' 	=> 0
 		);
 		// $data['medicines'] =$this->general_model->get('mst_medicines',$where);
 		$data['medicines'] =$this->general_model->get_medicines($where);
@@ -49,15 +49,15 @@ class medicineDetails extends CI_Controller {
 		$data['pageHeading'] = 'Medicine Details';
 		$data['singleHeading'] = 'Medicine Details';
 		$data['pageTitle'] = "Medicine Details | ".HEX_APPLICATION_NAME;
-
-		$data['loginRedirect']=base_url().'masters/medicineDetails/add';
+		$data['loginRedirect']=base_url().'masters/medicineDetails/insert';
+		
         $data['medicineGenericName'] = $this->general_model->get_combined_list_two('medicineId','medicineName','medicineGenericName','mst_basic_medicines', array('Select' => 'Select medicineName '), array('isActive' => 1, 'isDeleted' => 0));
 		$data['medicineUnit'] = $this->general_model->get_list('medicineUnitId','medicineUnitName','mst_medicine_units', array('Select' => 'Select Medicine Unit '), array('isActive' => 1, 'isDeleted' => 0));
 		$data['medicineShelf'] = $this->general_model->get_list('medicineShelfId','medicineShelfName','mst_medicine_shelves', array('Select' => 'Select Shelf '), array('isActive' => 1, 'isDeleted' => 0));
 	    $data['medicineCategory'] = $this->general_model->get_list('medicineCategoryId','medicineCategoryName','mst_medicine_categories', array('Select' => 'Select Medicine Category '), array('isActive' => 1, 'isDeleted' => 0));
 		$data['medicineType'] = $this->general_model->get_list('medicineTypeId','medicineTypeName','mst_medicine_types', array('Select' => 'Select Medicine Type '), array('isActive' => 1, 'isDeleted' => 0));
 		$data['medicineManufacturer'] = $this->general_model->get_list('manufacturerId','manufacturerName','mst_medicine_manufacturers', array('Select' => 'Select Medicine Manufacture '), array('isActive' => 1, 'isDeleted' => 0));
-		$data['loginRedirect']=base_url().'masters/medicineDetails/insert';
+		
 
 		$this->load->view('admin/templates/header',$data);
 		$this->load->view('masters/medicineDetails/medicineDetails',$data);
@@ -72,13 +72,12 @@ class medicineDetails extends CI_Controller {
 			 redirect(base_url().'admin/login');
 				}
 
-		$this->form_validation->set_rules('medicineName','medicineName','required');
+	
 		$this->form_validation->set_rules('medicineUnitName','Medicine Unit','required');
 		$this->form_validation->set_rules('medicineShelfName','Medicine Shelf','required');
 		$this->form_validation->set_rules('medicineCategoryName','Medicine Category','required');
 		$this->form_validation->set_rules('medicineTypeName','Medicine Type','required');
-		$this->form_validation->set_rules('medicineManufacturerPrice','medicineManufacturerPrice','required');
-		$this->form_validation->set_rules('medicineDetails','medicineDetails','required');
+				
 
 		if ($this->form_validation->run() == FALSE) 
 		{	
@@ -98,8 +97,9 @@ class medicineDetails extends CI_Controller {
 				'medicineManufacturer'				=> $this->input->post('manufacturerName'),
 				'medicineManufacturerPrice'				=> $this->input->post('medicineManufacturerPrice'),
 				'medicineBarcode'				=> $this->input->post('medicineBarcode'),
+				'isActive'						=> 1
 			
-				'isActive'							=> 1
+				
 			);
 			$this->general_model->insert('mst_medicines',$data);
 			$this->session->set_flashdata('registerMessage','Added Successfully',':old:');
@@ -192,7 +192,8 @@ class medicineDetails extends CI_Controller {
 		redirect(base_url().'masters/medicineDetails');
 	}
 
-	public function makeactive($medicineId  = 0){
+	public function makeactive($medicineId  = 0)
+	{
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(
@@ -204,7 +205,8 @@ class medicineDetails extends CI_Controller {
 		redirect(base_url().'masters/medicineDetails');
 	}
 
-	public function makeinactive($medicineId  = 0){
+	public function makeinactive($medicineId  = 0)
+	{
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(

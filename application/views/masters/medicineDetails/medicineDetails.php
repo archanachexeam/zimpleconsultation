@@ -27,7 +27,7 @@
 							<div class="form-group">
 								<label class="form-label">Medicine Unit *</label>
 								<?php 
-								$designationsOptionsJs = 'id="medicineUnitName" class="form-control medicineUnitName "';
+								$designationsOptionsJs = 'id="medicineUnitName"   class="form-control medicineUnitName" required="required"';
 								echo form_dropdown('medicineUnitName', $medicineUnit, '', $designationsOptionsJs);
 							?>
 	         
@@ -163,19 +163,18 @@
 												<td><?php echo $medicine['medicineCategoryName'];?></td>
 												<td><?php echo $medicine['medicineTypeName'];?></td>
 												<td><?php echo $medicine['medicinePrice'];?></td>
-
 												<td><?php echo $medicine['manufacturerName'];?></td>
 												<td><?php echo $medicine['medicineManufacturerPrice'];?></td>
-												
 												<td><?php echo $medicine['medicineBarcode'];?></td>
-											
-												
-												<td>
+										      <td>
 		                  	<?php 
 							 
-													if($medicine['isActive'] == 1){
+													if($medicine['isActive'] == 1)
+													{
 														echo "Active";
-													}else{
+													}
+													else
+													{
 														echo "Inactive";
 													}
 												?>
