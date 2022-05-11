@@ -82,6 +82,12 @@
       </a>
     </li>
     <li class="slide">
+      <a class="side-menu__item" href="<?php echo base_url().'masters/Medicines/'?>">
+        <i class="side-menu__icon fa fa-plus-square"></i>
+        <span class="side-menu__label"><?php echo $this->lang->line('Medicines'); ?></span>
+      </a>
+    </li>
+    <li class="slide">
       <a class="side-menu__item" href="<?php echo base_url().'masters/Diseases/'?>">
         <i class="side-menu__icon fa fa-heartbeat"></i>
         <span class="side-menu__label"><?php echo $this->lang->line('Diseases'); ?></span>
@@ -103,11 +109,7 @@
       <ul class="side-menu">
 
 
-    <li class="slide">
-      <a class="side-menu__item" href="<?php echo base_url().'masters/Medicines/'?>">
-        <i class="side-menu__icon fa fa-plus-square"></i>
-        <span class="side-menu__label"><?php echo $this->lang->line('Medicines'); ?></span>
-      </a>
+  
    
         <ul>
           <li class="slide">

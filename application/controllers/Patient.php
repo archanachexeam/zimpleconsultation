@@ -488,7 +488,8 @@ class Patient extends CI_Controller {
 		$this->load->view('admin/templates/footer');
 	}
 
-	public function searchDoctor(){
+	public function searchDoctor()
+	{
 		if($this->session->userdata('logged_in_type') != "user") 
 		{ 
 			redirect(base_url().'Patient/login');
@@ -508,6 +509,7 @@ class Patient extends CI_Controller {
 			}
 			// Patients List
 			$data['patients'] = $this->general_model->get_combined_list_four('patientId','patientOPNumber',
+			
 			'patientFName','patientLName','patientPhone','mst_patients',
 			 array('Select' => 'Select Patient'), array('isActive' => 1, 'isDeleted' => 0),'patientId', $patients);
 		}else{

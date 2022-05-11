@@ -24,12 +24,14 @@ class General_Model extends CI_Model {
 			}
 		}
 		
-		if($or_where) {
+		if($or_where) 
+		{
 			$this->db->or_where($or_where);
 		}
 		
 		$rs = $this->db->get_where($table_name, $where);
-		if($rs->num_rows() > 0){
+		if($rs->num_rows() > 0)
+		{
 			return $rs->result_array();
 		}
 		else{
@@ -41,15 +43,19 @@ class General_Model extends CI_Model {
 			$offset=null,$order_by_field=null,$order_by_order=null,
 			$like=null, $or_where=null)
 			{
-		if(!is_null($offset) and !is_null($limit)){
+		if(!is_null($offset) and !is_null($limit))
+		{
 			$this->db->limit($limit,$offset);
 		}
-		if($order_by_field != null and $order_by_order != null){
+		if($order_by_field != null and $order_by_order != null)
+		{
 			$this->db->order_by($order_by_field, $order_by_order);
 		}
 		
-		if($like !=null && is_array($like)) {
-			foreach($like as $key=>$value) {			
+		if($like !=null && is_array($like))
+		 {
+			foreach($like as $key=>$value)
+			 {			
 				$this->db->like($key, $value); 
 			}
 		}
@@ -63,14 +69,17 @@ class General_Model extends CI_Model {
 	}
 
 	function getSum($field_name = '', $table_name = '', $where=array(),$limit=null,$offset=null,$order_by_field=null,$order_by_order=null,$like=null, $or_where=null){
-		if(!is_null($offset) and !is_null($limit)){
+		if(!is_null($offset) and !is_null($limit))
+		{
 			$this->db->limit($limit,$offset);
 		}
-		if($order_by_field != null and $order_by_order != null){
+		if($order_by_field != null and $order_by_order != null)
+		{
 			$this->db->order_by($order_by_field, $order_by_order);
 		}
 		
-		if($like !=null && is_array($like)) {
+		if($like !=null && is_array($like)) 
+		{
 			foreach($like as $key=>$value) {			
 				$this->db->like($key, $value); 
 			}
@@ -94,22 +103,26 @@ class General_Model extends CI_Model {
 
 	
 	// get list of records for drop down
-	function get_list($id_field_name,$value_field_name,$table_name,$init_list=array(),$where=array()){
+	function get_list($id_field_name,$value_field_name,$table_name,$init_list=array(),$where=array())
+	 {
 		$this->db->select($id_field_name);
 		$this->db->select($value_field_name);
 		$this->db->where($where);
 		$rs = $this->db->get($table_name);
-		if($rs->num_rows()>0){
+		if($rs->num_rows()>0)
+		{
 			$records = $rs->result_array();
-			foreach($records as $record){
+			foreach($records as $record)
+			{
 				$init_list[$record[$id_field_name]] = $record[$value_field_name];
 			}
 			return $init_list;
 		}
-		else{
+		else
+		 {
 			return array();
-		}
-	}
+		 }
+	 }
 	
 
 	function get_combined_list($id_field_name="",$value_field_name1="",$value_field_name2="",$value_field_name3="",$table_name="",$init_list=array(),$where=array()){
@@ -385,6 +398,62 @@ class General_Model extends CI_Model {
 		$max = $res2[0][$field_name];
 		if($max == NULL) return 1; else return $max+1;
 	}
+    
+	function get_medicines($where=array(),$limit=null,$offset=null,$order_by_field=null,
+	$order_by_order=null,$like=null, $or_where=null,$where_in_field = null, $where_in = array())
+	{
+		if(!is_null($offset) and !is_null($limit)){
+			$this->db->limit($limit,$offset);
+		}
+		if($order_by_field != null and $order_by_order != null){
+			$this->db->order_by($order_by_field, $order_by_order);
+		}
+		
+		if($like !=null && is_array($like)) {
+			foreach($like as $key=>$value) {			
+				$this->db->like($key, $value); 
+			}
+		}
+		
+		if($or_where) {
+			$this->db->or_where($or_where);
+		}
+
+		if(!empty($where_in) && $where_in_field !=null){
+			$this->db->where_in($where_in_field, $where_in);
+		}
+
+		$this->db->select('mst_medicines.*');
+		$this->db->select('mst_medicine_units.* ');
+		$this->db->select('mst_medicine_shelves.* ');
+		$this->db->select('mst_medicine_categories.* ');
+		$this->db->select('mst_medicine_types.* ');
+		 $this->db->select('mst_medicine_manufacturers.*');
+		// $this->db->select('mst_slots.slotName');
+		// $this->db->select('sys_bookingstatus.bookingStatusName');
+
+
+		$this->db->join('mst_medicine_units', 'mst_medicines.medicineUnit = mst_medicine_units.medicineUnitId', 'left');
+		 $this->db->join('mst_medicine_shelves', 'mst_medicines.medicineShelf = mst_medicine_shelves.medicineShelfId ', 'left');
+		 $this->db->join('mst_medicine_categories', 'mst_medicines.medicineCategory = mst_medicine_categories.medicineCategoryId  ', 'left');
+		$this->db->join('mst_medicine_types', 'mst_medicines.medicineType = mst_medicine_types.medicineTypeId ', 'left');
+		$this->db->join('mst_medicine_manufacturers', 'mst_medicines.medicineManufacturer = mst_medicine_manufacturers.manufacturerId', 'left');
+		// $this->db->join('mst_slots', 'link_doctor_slots.slot = mst_slots.slotId', 'left');
+		// $this->db->join('sys_bookingstatus', 'trn_bookings.bookingStatus = sys_bookingstatus.bookingStatusId', 'left');
+		
+
+		$rs = $this->db->get_where('mst_medicines', $where);
+		if($rs->num_rows() > 0){
+			return $rs->result_array();
+		}
+		else{
+			return false;
+		}
+	}
+
+
+
+
 
 	function get_doctors($where=array(),$limit=null,$offset=null,
 	$order_by_field=null,$order_by_order=null,$like=null, $or_where=null)

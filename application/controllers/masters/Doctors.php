@@ -35,7 +35,8 @@ class Doctors extends CI_Controller {
 
 	public function index()
 	{
-		if($this->session->userdata('logged_in_type') != "admin" && $this->session->userdata('logged_in_type') != "frontoffice") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "admin" && $this->session->userdata('logged_in_type') != "frontoffice")
+		 { redirect(base_url().'admin/login');	}
 
 		$where = array('mst_doctors.isDeleted' => 0);
 		$data['doctors'] =$this->general_model->get_doctors($where);

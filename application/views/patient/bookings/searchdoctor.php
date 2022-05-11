@@ -35,7 +35,7 @@
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label class="form-label">Department *</label>
+								<label class="form-label">Department *</label>    
 								<?php 
 	                $designationsOptionsJs = 'id="doctorDepartment" class="form-control doctorDepartment select2-show-search"';
 	                echo form_dropdown('doctorDepartment', $departments, '', $designationsOptionsJs);

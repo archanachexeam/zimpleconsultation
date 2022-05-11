@@ -36,6 +36,7 @@
 		                $designationsOptionsJs = 'id="doctorDepartment" class="form-control doctorDepartment select2-show-search"';
 		                echo form_dropdown('doctorDepartment', $departments, $singledoctor[0]['doctorDepartment'], $designationsOptionsJs);
 		              ?>
+					  
 								</div>
 								<div class="form-group col-md-6">
 									<label class="form-label">Qualifications *</label>

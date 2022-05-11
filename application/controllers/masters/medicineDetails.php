@@ -37,8 +37,13 @@ class medicineDetails extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in_type') != "admin" && $this->session->userdata('logged_in_type') != "frontoffice") { redirect(base_url().'admin/login');	}
 
-		$where = array('mst_doctors.isDeleted' => 0);
-		$data['doctors'] =$this->general_model->get_doctors($where);
+		// $where = array('isDeleted' => 0);
+		$where = array(
+			
+			'mst_medicines.isDeleted' 			=> 0
+		);
+		// $data['medicines'] =$this->general_model->get('mst_medicines',$where);
+		$data['medicines'] =$this->general_model->get_medicines($where);
 
 		$data['currentMenu'] = 'Medicine Details';
 		$data['pageHeading'] = 'Medicine Details';
@@ -46,219 +51,168 @@ class medicineDetails extends CI_Controller {
 		$data['pageTitle'] = "Medicine Details | ".HEX_APPLICATION_NAME;
 
 		$data['loginRedirect']=base_url().'masters/medicineDetails/add';
-        $data['medicineGenericName'] = $this->general_model->get_combined_list('medicineId','medicineName','medicineGenericName','mst_basic_medicines', array('Select' => 'Select medicineName '), array('isActive' => 1, 'isDeleted' => 0));
+        $data['medicineGenericName'] = $this->general_model->get_combined_list_two('medicineId','medicineName','medicineGenericName','mst_basic_medicines', array('Select' => 'Select medicineName '), array('isActive' => 1, 'isDeleted' => 0));
+		$data['medicineUnit'] = $this->general_model->get_list('medicineUnitId','medicineUnitName','mst_medicine_units', array('Select' => 'Select Medicine Unit '), array('isActive' => 1, 'isDeleted' => 0));
+		$data['medicineShelf'] = $this->general_model->get_list('medicineShelfId','medicineShelfName','mst_medicine_shelves', array('Select' => 'Select Shelf '), array('isActive' => 1, 'isDeleted' => 0));
+	    $data['medicineCategory'] = $this->general_model->get_list('medicineCategoryId','medicineCategoryName','mst_medicine_categories', array('Select' => 'Select Medicine Category '), array('isActive' => 1, 'isDeleted' => 0));
+		$data['medicineType'] = $this->general_model->get_list('medicineTypeId','medicineTypeName','mst_medicine_types', array('Select' => 'Select Medicine Type '), array('isActive' => 1, 'isDeleted' => 0));
+		$data['medicineManufacturer'] = $this->general_model->get_list('manufacturerId','manufacturerName','mst_medicine_manufacturers', array('Select' => 'Select Medicine Manufacture '), array('isActive' => 1, 'isDeleted' => 0));
+		$data['loginRedirect']=base_url().'masters/medicineDetails/insert';
 
 		$this->load->view('admin/templates/header',$data);
 		$this->load->view('masters/medicineDetails/medicineDetails',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
-	public function add(){
+
+
+	public function insert(){
+		if($this->session->userdata('logged_in_type') != "admin")
+		 { 
+			 redirect(base_url().'admin/login');
+				}
+
+		$this->form_validation->set_rules('medicineName','medicineName','required');
+		$this->form_validation->set_rules('medicineUnitName','Medicine Unit','required');
+		$this->form_validation->set_rules('medicineShelfName','Medicine Shelf','required');
+		$this->form_validation->set_rules('medicineCategoryName','Medicine Category','required');
+		$this->form_validation->set_rules('medicineTypeName','Medicine Type','required');
+		$this->form_validation->set_rules('medicineManufacturerPrice','medicineManufacturerPrice','required');
+		$this->form_validation->set_rules('medicineDetails','medicineDetails','required');
+
+		if ($this->form_validation->run() == FALSE) 
+		{	
+			$this->session->set_flashdata('registerMessage',validation_errors(),':old:');
+			redirect(base_url().'masters/medicineDetails');
+		}
+		
+			$data = array(
+				'medicineName'						=> $this->input->post('medicineName'),
+				'medicineGenericName'				=> $this->input->post('medicineGenericName'),
+				'medicineUnit'			             => $this->input->post('medicineUnitName'),
+				'medicineShelf'						=> $this->input->post('medicineShelfName'),
+				'medicineDetails'						=> $this->input->post('medicineDetails'),
+				'medicineCategory'         	=> $this->input->post('medicineCategoryName'),
+				'medicineType'				=> $this->input->post('medicineTypeName'),
+				'medicinePrice'						=> $this->input->post('medicinePrice'),
+				'medicineManufacturer'				=> $this->input->post('manufacturerName'),
+				'medicineManufacturerPrice'				=> $this->input->post('medicineManufacturerPrice'),
+				'medicineBarcode'				=> $this->input->post('medicineBarcode'),
+			
+				'isActive'							=> 1
+			);
+			$this->general_model->insert('mst_medicines',$data);
+			$this->session->set_flashdata('registerMessage','Added Successfully',':old:');
+			redirect(base_url().'masters/medicineDetails');
+		
+	}
+
+	
+	public function edit($medicineId = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
+		$where = array('mst_medicines.isDeleted' => 0);
+		$data['doctors'] =$this->general_model->get('mst_medicines',$where);
+
+		$whereSingleMedicine = array('mst_medicines.medicineId' => $medicineId);
+		$data['singlemedicine'] =$this->general_model->get('mst_medicines',$whereSingleMedicine);
 
 		// Department List
-		$data['medicineGenericName'] = $this->general_model->get_list('medicineId','medicineName','medicineGenericName','mst_basic_medicines', array('Select' => 'Select medicineName '), array('isActive' => 1, 'isDeleted' => 0));
-
+		 $data['medicineUnit'] = $this->general_model->get_list('medicineUnitId','medicineUnitName','mst_medicine_units', array('Select' => 'Select Unit'), array('isActive' => 1, 'isDeleted' => 0));
+		$data['medicineShelf'] = $this->general_model->get_list('medicineShelfId','medicineShelfName','mst_medicine_shelves', array('Select' => 'Select Department'), array('isActive' => 1, 'isDeleted' => 0));
+		$data['medicineCategory'] = $this->general_model->get_list('medicineCategoryId','medicineCategoryName','mst_medicine_categories', array('Select' => 'Select Department'), array('isActive' => 1, 'isDeleted' => 0));
+		$data['medicineType'] = $this->general_model->get_list('medicineTypeId','medicineTypeName','mst_medicine_Types', array('Select' => 'Select Department'), array('isActive' => 1, 'isDeleted' => 0));
+		$data['medicineManufacturer'] = $this->general_model->get_list('manufacturerId','manufacturerName','mst_medicine_manufacturers', array('Select' => 'Select Department'), array('isActive' => 1, 'isDeleted' => 0));
+		
 
 		$data['currentMenu'] = 'Medicine Details';
 		$data['pageHeading'] = 'Medicine Details';
 		$data['singleHeading'] = 'Medicine Details';
 		$data['pageTitle'] = "Medicine Details | ".HEX_APPLICATION_NAME;
 
-		$data['loginRedirect']=base_url().'masters/Doctors/insert';
+		$data['loginRedirect']=base_url().'masters/medicineDetails/update';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('masters/doctors/addDoctor',$data);
+		$this->load->view('masters/medicineDetails/editMedicine',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
-	public function insert(){
+	public function update()
+	{
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
-		$this->form_validation->set_rules('doctorFName','First Name','required');
-		$this->form_validation->set_rules('doctorPhone','Phone Number','required');
-		$this->form_validation->set_rules('doctorEmail','Email','required');
-		$this->form_validation->set_rules('doctorQualifications','Qualifications','required');
+		$this->form_validation->set_rules('medicineName','medicineName','required');
+		$this->form_validation->set_rules('medicineUnit','Medicine Unit','required');
+		$this->form_validation->set_rules('medicineShelf','Medicine Shelf','required');
+		$this->form_validation->set_rules('medicineCategory','Medicine Category','required');
+		$this->form_validation->set_rules('medicineType','Medicine Type','required');
+		$this->form_validation->set_rules('medicineManufacturerPrice','medicineManufacturerPrice','required');
+		$this->form_validation->set_rules('medicineDetails','medicineDetails','required');
 
 		if ($this->form_validation->run() == FALSE) {	
 			$this->session->set_flashdata('registerMessage',validation_errors(),':old:');
-			redirect(base_url().'masters/Doctors');
-		}else{
-			$doctorPhoto ="";
-			if (isset($_FILES['doctorPhoto']) && !empty($_FILES['doctorPhoto']['tmp_name'])){
-				$config['upload_path'] 		= './uploads/doctors/';
-				$config['allowed_types']    = 'jpg|png';
-				$config['max_size']         = 5000000;
-				$config['max_width']        = 1024000;
-				$config['max_height']       = 7680000;
-				$config['encrypt_name'] 		= TRUE;
-				$this->load->library('upload', $config);
-				if ( ! $this->upload->do_upload('doctorPhoto')){
-					$this->session->set_flashdata('registerMessage',$this->upload->display_errors(),':old:');
-					$doctorPhoto ="";
-				}else{
-					$dataUpload = $this->upload->data();
-					$doctorPhoto = $dataUpload['file_name']; 
-				}
-			}
-			$data = array(
-				'doctorFName'						=> $this->input->post('doctorFName'),
-				'doctorLName'						=> $this->input->post('doctorLName'),
-				'doctorDepartment'			=> $this->input->post('doctorDepartment'),
-				'doctorPhone'						=> $this->input->post('doctorPhone'),
-				'doctorEmail'						=> $this->input->post('doctorEmail'),
-				'doctorQualifications'	=> $this->input->post('doctorQualifications'),
-				'doctorConsultationFee'	=> $this->input->post('doctorConsultationFee'),
-				'doctorLogin'						=> $this->input->post('doctorLogin'),
-				'doctorPassword'				=> md5($this->input->post('doctorPassword')),
-				'doctorPhoto'						=> $doctorPhoto,
-				'isActive'							=> 1
-			);
-			$this->general_model->insert('mst_doctors',$data);
-			$this->session->set_flashdata('registerMessage','Added Successfully',':old:');
-			redirect(base_url().'masters/Doctors');
+			redirect(base_url().'masters/medicineDetails');
 		}
-	}
-
-	public function view($doctorId = 0){
-		if($this->session->userdata('logged_in_type') != "admin" && $this->session->userdata('logged_in_type') != "frontoffice")
-		 
-		{ redirect(base_url().'admin/login');	}
-
-		$whereSingleCategory = array('mst_doctors.doctorId' => $doctorId);
-		$data['singledoctor'] = $this->general_model->get_doctors($whereSingleCategory);
-
-		$data['currentMenu'] = 'Doctors';
-		$data['pageHeading'] = 'Doctors';
-		$data['singleHeading'] = 'Doctors';
-		$data['pageTitle'] = "Doctors | ".HEX_APPLICATION_NAME;
-
-		$this->load->view('admin/templates/header',$data);
-		$this->load->view('masters/doctors/viewDoctor',$data);
-		$this->load->view('admin/templates/footer');
-	}
-
-	public function edit($doctorId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
-
-		$where = array('mst_doctors.isDeleted' => 0);
-		$data['doctors'] =$this->general_model->get('mst_doctors',$where);
-
-		$whereSingleCategory = array('mst_doctors.doctorId' => $doctorId);
-		$data['singledoctor'] =$this->general_model->get('mst_doctors',$whereSingleCategory);
-
-		// Department List
-		$data['departments'] = $this->general_model->get_list('departmentId','departmentName','mst_departments', array('Select' => 'Select Department'), array('isActive' => 1, 'isDeleted' => 0));
-
-		$data['currentMenu'] = 'Doctors';
-		$data['pageHeading'] = 'Doctors';
-		$data['singleHeading'] = 'Doctors';
-		$data['pageTitle'] = "Doctors | ".HEX_APPLICATION_NAME;
-
-		$data['loginRedirect']=base_url().'masters/Doctors/update';
-
-		$this->load->view('admin/templates/header',$data);
-		$this->load->view('masters/doctors/editDoctor',$data);
-		$this->load->view('admin/templates/footer');
-	}
-
-	public function update(){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
-
-		$this->form_validation->set_rules('doctorFName','First Name','required');
-		$this->form_validation->set_rules('doctorPhone','Phone Number','required');
-		$this->form_validation->set_rules('doctorEmail','Email','required');
-		$this->form_validation->set_rules('doctorQualifications','Qualifications','required');
-
-		if ($this->form_validation->run() == FALSE) {	
-			$this->session->set_flashdata('registerMessage',validation_errors(),':old:');
-			redirect(base_url().'masters/Doctors');
-		}else{
-			$doctorPhoto ="";
-			if (isset($_FILES['doctorPhoto']) && !empty($_FILES['doctorPhoto']['tmp_name'])){
-				$config['upload_path'] 		= './uploads/doctors/';
-				$config['allowed_types']    = 'jpg|png';
-				$config['max_size']         = 5000000;
-				$config['max_width']        = 1024000;
-				$config['max_height']       = 7680000;
-				$config['encrypt_name'] 		= TRUE;
-				$this->load->library('upload', $config);
-				if ( ! $this->upload->do_upload('doctorPhoto')){
-					$this->session->set_flashdata('registerMessage',$this->upload->display_errors(),':old:');
-					$doctorPhoto ="";
-				}else{
-					$dataUpload = $this->upload->data();
-					$doctorPhoto = $dataUpload['file_name']; 
-				}
-			}
-
-			$data = array(
-				'doctorFName'						=> $this->input->post('doctorFName'),
-				'doctorLName'						=> $this->input->post('doctorLName'),
-				'doctorDepartment'			=> $this->input->post('doctorDepartment'),
-				'doctorPhone'						=> $this->input->post('doctorPhone'),
-				'doctorEmail'						=> $this->input->post('doctorEmail'),
-				'doctorQualifications'	=> $this->input->post('doctorQualifications'),
-				'doctorConsultationFee'	=> $this->input->post('doctorConsultationFee'),
-				'doctorLogin'						=> $this->input->post('doctorLogin')
-			);
-
-			if($doctorPhoto != ""){
-				$data['doctorPhoto'] = $doctorPhoto;
-			}
-
-			if($this->input->post('doctorPassword') != ""){
-				$data['doctorPassword'] = md5($this->input->post('doctorPassword'));
-			}
+		
+		$data = array(
+			'medicineName'						=> $this->input->post('medicineName'),
+			'medicineGenericName'				=> $this->input->post('medicineGenericName'),
+			'medicineUnit'			             => $this->input->post('medicineUnit'),
+			'medicineShelf'						=> $this->input->post('medicineShelf'),
+			'medicineDetails'						=> $this->input->post('medicineDetails'),
+			'medicineCategory'         	=> $this->input->post('medicineCategory'),
+			'medicineType'				=> $this->input->post('medicineType'),
+			'medicinePrice'						=> $this->input->post('medicinePrice'),
+			'medicineManufacturer'				=> $this->input->post('medicineManufacturer'),
+			'medicineManufacturerPrice'				=> $this->input->post('medicineManufacturerPrice'),
+			'medicineBarcode'				=> $this->input->post('medicineBarcode'),
+		
+			
+		);
 
 			$where = array(
-				'doctorId'	=> $this->input->post('doctorId')
+				'medicineId'	=> $this->input->post('medicineId')
 			);
-			$this->general_model->update('mst_doctors',$data, $where);
+			$this->general_model->update('mst_medicines',$data, $where);
 			$this->session->set_flashdata('registerMessage','Updated Successfully',':old:');
-			redirect(base_url().'masters/Doctors');
-		}
+			redirect(base_url().'masters/medicineDetails');
+		
+		
 	}
 
-	public function delete($doctorId = 0)
-	{
+	public function delete($medicineId  = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(
 			'isDeleted'		=>	1
 		);
-		$where = array('doctorId' => $doctorId);
-		$this->general_model->update('mst_doctors',$data, $where);
+		$where = array('medicineId' => $medicineId );
+		$this->general_model->update('mst_medicines',$data, $where);
 		$this->session->set_flashdata('registerMessage','Deleted Successfully',':old:');
-		redirect(base_url().'masters/Doctors');
+		redirect(base_url().'masters/medicineDetails');
 	}
 
-	public function makeactive($doctorId = 0){
+	public function makeactive($medicineId  = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(
 			'isActive'		=>	1
 		);
-		$where = array('doctorId' => $doctorId);
-		$this->general_model->update('mst_doctors',$data, $where);
+		$where = array('medicineId' => $medicineId );
+		$this->general_model->update('mst_medicines',$data, $where);
 		$this->session->set_flashdata('registerMessage','Status Changed to Active',':old:');
-		redirect(base_url().'masters/Doctors');
+		redirect(base_url().'masters/medicineDetails');
 	}
 
-	public function makeinactive($doctorId = 0){
+	public function makeinactive($medicineId  = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(
 			'isActive'		=>	0
 		);
-		$where = array('doctorId' => $doctorId);
-		$this->general_model->update('mst_doctors',$data, $where);
+		$where = array('medicineId' => $medicineId );
+		$this->general_model->update('mst_medicines',$data, $where);
 		$this->session->set_flashdata('registerMessage','Status Changed to Inactive',':old:');
-		redirect(base_url().'masters/Doctors');
+		redirect(base_url().'masters/medicineDetails');
 	}
-
-
-
-
 }

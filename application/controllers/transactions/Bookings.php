@@ -46,6 +46,7 @@ class Bookings extends CI_Controller {
 			'trn_bookings.consultationDate'	=> $consultationDate,
 			'trn_bookings.isCancelled' 			=> 0
 		);
+		
 
 		if(isset($_POST['doctor']) && $_POST['doctor'] > 0){
 			$where['trn_bookings.doctor'] = $this->input->post('doctor');
