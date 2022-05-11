@@ -99,52 +99,50 @@
         <span class="side-menu__label"><?php echo $this->lang->line('LabTests'); ?></span>
       </a>
     </li>
-    </ul>
+   
     <li class="slide">
       <a class="side-menu__item" href="<?php echo base_url().'masters/medicineDetails/'?>">
         <i class="side-menu__icon fa fa-medkit"></i>
         <span class="side-menu__label"><?php echo $this->lang->line('Medicines'); ?></span>
       </a>
-      </li>
+      
+      
       <ul class="side-menu">
-
-
-  
-   
-        <ul>
+         
           <li class="slide">
             <a class="side-menu__item" href="<?php echo base_url().'index.php/masters/Units/'?>">
             <i class="side-menu__icon fa fa-plus-circle"></i>
-            <span class="side-menu__label"><?php echo $this->lang->line('Units'); ?></span>
+            <span class="side-menu__label"><?php echo $this->lang->line('Units'); ?>Units</span>
           </a>
           </li>
           <li class="slide">
             <a class="side-menu__item" href="<?php echo base_url().'index.php/masters/shelves/'?>">
             <i class="side-menu__icon fa fa-table"></i>
-            <span class="side-menu__label"><?php echo $this->lang->line('Shelves'); ?></span>
+            <span class="side-menu__label"><?php echo $this->lang->line('Shelves'); ?>Shelves</span>
           </a>
           </li>
           <li class="slide">
           <a class="side-menu__item" href="<?php echo base_url().'index.php/masters/Categories/'?>">
             <i class="side-menu__icon fa fa-tasks"></i>
-            <span class="side-menu__label"><?php echo $this->lang->line('Medicine Catagory'); ?></span>
+            <span class="side-menu__label"><?php echo $this->lang->line('Medicine Catagory'); ?>Medicine Catagory</span>
           </a>
           </li>
           <li class="slide">
           <a class="side-menu__item" href="<?php echo base_url().'index.php/masters/Types/'?>">
             <i class="side-menu__icon fa fa-asterisk"></i>
-            <span class="side-menu__label"><?php echo $this->lang->line('Medicine Type'); ?></span>
+            <span class="side-menu__label"><?php echo $this->lang->line('Medicine Type'); ?>Medicine Type</span>
           </a>
           </li>
           <li class="slide">
           <a class="side-menu__item" href="<?php echo base_url().'index.php/masters/Manufacturers/'?>">
             <i class="side-menu__icon fa fa-square"></i>
-            <span class="side-menu__label"><?php echo $this->lang->line('Medicine Type'); ?></span>
+            <span class="side-menu__label"><?php echo $this->lang->line('Medicine Type'); ?>Medicine Type</span>
           </a>
           </li>
       </ul>
+      </li>
    
-  <ul>
+ 
  
     
   

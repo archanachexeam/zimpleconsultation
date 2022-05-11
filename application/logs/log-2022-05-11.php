@@ -1487,3 +1487,121 @@ ERROR - 2022-05-11 10:39:50 --> Could not find the language line "Medicine Catag
 ERROR - 2022-05-11 10:39:50 --> Could not find the language line "Medicine Type"
 ERROR - 2022-05-11 10:39:50 --> Could not find the language line "Medicine Type"
 ERROR - 2022-05-11 10:39:50 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:00:03 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:00:03 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:00:03 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:00:03 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:00:03 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:00:03 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:10:21 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:10:21 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:10:21 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:10:21 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:10:21 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:10:21 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:10:28 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:10:28 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:10:28 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:10:28 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:10:28 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:10:28 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:10:45 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:10:45 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:10:45 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:10:45 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:10:45 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:10:45 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:10:51 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:10:51 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:10:51 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:10:51 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:10:51 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:10:51 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:11:54 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:11:54 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:11:54 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:11:54 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:11:54 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:11:54 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:12:14 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:12:14 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:12:14 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:12:14 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:12:14 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:12:14 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:12:17 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:12:17 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:12:17 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:12:17 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:12:17 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:12:17 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:13:26 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:13:26 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:13:26 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:13:26 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:13:26 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:13:26 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:13:41 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:13:41 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:13:41 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:13:41 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:13:41 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:13:41 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:13:58 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:13:58 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:13:58 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:13:58 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:13:58 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:13:58 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:14:12 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:14:12 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:14:12 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:14:12 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:14:12 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:14:12 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:48:34 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:48:34 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:48:34 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:48:34 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:48:34 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:48:34 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:49:21 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:49:21 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:49:21 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:49:21 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:49:21 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:49:21 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:50:02 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:50:02 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:50:02 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:50:02 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:50:02 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:50:02 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:50:15 --> 404 Page Not Found: Assets/plugins
+ERROR - 2022-05-11 12:50:15 --> 404 Page Not Found: Assets/plugins
+ERROR - 2022-05-11 12:51:44 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:51:44 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:51:44 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:51:44 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:51:44 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:51:44 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:51:45 --> 404 Page Not Found: Assets/plugins
+ERROR - 2022-05-11 12:51:45 --> 404 Page Not Found: Assets/plugins
+ERROR - 2022-05-11 12:52:00 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:52:00 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:52:00 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:52:00 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:52:00 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:52:00 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:52:27 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:52:27 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:52:27 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:52:27 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:52:27 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:52:27 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
+ERROR - 2022-05-11 12:53:10 --> Could not find the language line "Units"
+ERROR - 2022-05-11 12:53:10 --> Could not find the language line "Shelves"
+ERROR - 2022-05-11 12:53:10 --> Could not find the language line "Medicine Catagory"
+ERROR - 2022-05-11 12:53:10 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:53:10 --> Could not find the language line "Medicine Type"
+ERROR - 2022-05-11 12:53:10 --> Severity: Warning --> Undefined variable $notifications C:\xampp\htdocs\zimpleconsultation\application\views\admin\templates\header.php 186
