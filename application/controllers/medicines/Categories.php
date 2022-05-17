@@ -35,7 +35,8 @@ class Categories extends CI_Controller {
 
 	public function index()
 	{
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
+
 
 		$where = array('isDeleted' => 0);
 		$data['categories'] =$this->general_model->get('mst_medicine_categories',$where);
@@ -53,7 +54,7 @@ class Categories extends CI_Controller {
 	}
 
 	public function insert(){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
 
 		$this->form_validation->set_rules('medicineCategoryName','Category Name','required');
 
@@ -72,7 +73,7 @@ class Categories extends CI_Controller {
 	}
 
 	public function edit($medicineCategoryId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
 
 		$where = array('mst_medicine_categories.isDeleted' => 0);
 		$data['categories'] =$this->general_model->get('mst_medicine_categories',$where);
@@ -93,7 +94,7 @@ class Categories extends CI_Controller {
 	}
 
 	public function update(){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
 
 		$this->form_validation->set_rules('medicineCategoryName','Department Name','required');
 
@@ -114,7 +115,7 @@ class Categories extends CI_Controller {
 	}
 
 	public function delete($medicineCategoryId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
 
 		$data = array(
 			'isDeleted'		=>	1
@@ -126,7 +127,7 @@ class Categories extends CI_Controller {
 	}
 
 	public function makeactive($medicineCategoryId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
 
 		$data = array(
 			'isActive'		=>	1
@@ -138,7 +139,7 @@ class Categories extends CI_Controller {
 	}
 
 	public function makeinactive($medicineCategoryId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
 
 		$data = array(
 			'isActive'		=>	0

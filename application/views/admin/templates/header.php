@@ -92,9 +92,17 @@
         <?php
           if($this->session->userdata('logged_in_type') == "user"){
             include 'menu/patient.php';
-          }else if($this->session->userdata('logged_in_type') == "doctor"){
+          }
+          else if($this->session->userdata('logged_in_type') == "doctor")
+          {
             include 'menu/doctor.php';
-          }else if($this->session->userdata('logged_in_type') == "frontoffice"){
+          }
+          else if($this->session->userdata('logged_in_type') == "pharmacy")
+          {
+            include 'menu/pharmacy.php';
+          }
+          else if($this->session->userdata('logged_in_type') == "frontoffice")
+          {
             include 'menu/frontoffice.php';
           }else if($this->session->userdata('logged_in_type') == "admin"){
             include 'menu/superadmin.php';
@@ -263,19 +271,32 @@
                         <h5 class="text-dark mb-0"><?php echo $this->session->userdata['userName'];?></h5>
                         <small class="text-muted">
                           <?php
-                            if($this->session->userdata('logged_in_type') == "user"){
+                            if($this->session->userdata('logged_in_type') == "user")
+                            {
                               echo "User";
                               $profileLink = base_url().'patient/Profile';
                               $logoutLink = base_url().'patient/logout';
-                            }else if($this->session->userdata('logged_in_type') == "doctor"){
+                            }
+                            else if($this->session->userdata('logged_in_type') == "doctor")
+                            {
                               echo "Doctor";
                               $profileLink = base_url().'doctor/Profile';
                               $logoutLink = base_url().'doctor/logout';
-                            }else if($this->session->userdata('logged_in_type') == "frontoffice"){
+                            }
+                            else if($this->session->userdata('logged_in_type') == "pharmacy")
+                            {
+                              echo "pharmacy";
+                              $profileLink = base_url().'pharmacy/Profile';
+                              $logoutLink = base_url().'pharmacy/logout';
+                            }
+                            else if($this->session->userdata('logged_in_type') == "frontoffice")
+                            {
                               echo "Front Office";
                               $profileLink = base_url().'frontoffice/Profile';
                               $logoutLink = base_url().'frontoffice/logout';
-                            }else if($this->session->userdata('logged_in_type') == "admin"){
+                            }
+                            else if($this->session->userdata('logged_in_type') == "admin")
+                            {
                               echo "Administrator";
                               $profileLink = base_url().'Profile';
                               $logoutLink = base_url().'Admin/logout';

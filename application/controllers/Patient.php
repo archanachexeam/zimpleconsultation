@@ -507,6 +507,7 @@ class Patient extends CI_Controller {
 			{
 				array_push($patients, $linkedPatient['patient']);
 			}
+			
 			// Patients List
 			$data['patients'] = $this->general_model->get_combined_list_four('patientId','patientOPNumber',
 			

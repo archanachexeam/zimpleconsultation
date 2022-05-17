@@ -45,67 +45,70 @@ class Units extends CI_Controller {
 		$data['singleHeading'] = 'Medicine Units';
 		$data['pageTitle'] = "Medicine Units | ".HEX_APPLICATION_NAME;
 
-		$data['loginRedirect']=base_url().'masters/units/insert';
+		$data['loginRedirect']=base_url().'masters/Units/insert';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('masters/units/units',$data);
+		$this->load->view('masters/Units/Units',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
 	public function insert(){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
-		$this->form_validation->set_rules('medicineUnitName','Unit Name','required');
-		$this->form_validation->set_rules('medicineUnitSF','Unit Short Form','required');
+		$this->form_validation->set_rules('medicineUnitName','Medicine Name','required');
+		$this->form_validation->set_rules('medicineUnitSF','Medicine Symbol','required');
 
 		if ($this->form_validation->run() == FALSE) {	
 			$this->session->set_flashdata('registerMessage',validation_errors(),':old:');
-			redirect(base_url().'masters/units');
+			redirect(base_url().'masters/Labtests');
 		}else{
 			$data = array(
-				'medicineUnitName'		=> $this->input->post('medicineUnitName'),
+				'medicineUnitName'							=> $this->input->post('medicineUnitName'),
 				'medicineUnitSF'			=> $this->input->post('medicineUnitSF'),
-				'isActive'						=> 1
+				'isActive'								=> 1
 			);
 			$this->general_model->insert('mst_medicine_units',$data);
 			$this->session->set_flashdata('registerMessage','Added Successfully',':old:');
-			redirect(base_url().'masters/units');
+			redirect(base_url().'masters/Units');
 		}
 	}
 
-	public function edit($medicineUnitId = 0){
+
+	public function edit($medicineUnitId = 0)
+	{
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$where = array('mst_medicine_units.isDeleted' => 0);
-		$data['units'] =$this->general_model->get('mst_medicine_units',$where);
+		$data['Units'] =$this->general_model->get('mst_medicine_units',$where);
 
-		$whereSingleUnit = array('mst_medicine_units.medicineUnitId' => $medicineUnitId);
-		$data['singleunit'] =$this->general_model->get('mst_medicine_units',$whereSingleUnit);
+		$whereSingleunit = array('mst_medicine_units.medicineUnitId' => $medicineUnitId);
+		$data['singleunit'] =$this->general_model->get('mst_medicine_units',$whereSingleunit);
 
 		$data['currentMenu'] = 'Medicine Units';
 		$data['pageHeading'] = 'Medicine Units';
 		$data['singleHeading'] = 'Medicine Units';
 		$data['pageTitle'] = "Medicine Units | ".HEX_APPLICATION_NAME;
 
-		$data['loginRedirect']=base_url().'masters/units/update';
+		$data['loginRedirect']=base_url().'masters/Units/update';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('masters/units/editUnit',$data);
+		$this->load->view('masters/Units/editUnit',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
 	public function update(){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
-		$this->form_validation->set_rules('medicineUnitName','Unit Name','required');
-		$this->form_validation->set_rules('medicineUnitSF','Unit Short Form','required');
+		$this->form_validation->set_rules('medicineUnitName','Medicine Name','required');
+		$this->form_validation->set_rules('medicineUnitSF','Medicine Symbol','required');
+
 
 		if ($this->form_validation->run() == FALSE) {	
 			$this->session->set_flashdata('registerMessage',validation_errors(),':old:');
-			redirect(base_url().'medicines/edit');
+			redirect(base_url().'masters/Units');
 		}else{
 			$data = array(
-				'medicineUnitName'		=> $this->input->post('medicineUnitName'),
+				'medicineUnitName'							=> $this->input->post('medicineUnitName'),
 				'medicineUnitSF'			=> $this->input->post('medicineUnitSF'),
 			);
 			$where = array(
@@ -113,32 +116,32 @@ class Units extends CI_Controller {
 			);
 			$this->general_model->update('mst_medicine_units',$data, $where);
 			$this->session->set_flashdata('registerMessage','Updated Successfully',':old:');
-			redirect(base_url().'masters/units');
+			redirect(base_url().'masters/Units');
 		}
 	}
 
-	public function delete($medicineUnitId = 0){
+	public function delete($medicineUnitId  = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(
 			'isDeleted'		=>	1
 		);
-		$where = array('medicineUnitId' => $medicineUnitId);
+		$where = array('medicineUnitId' => $medicineUnitId );
 		$this->general_model->update('mst_medicine_units',$data, $where);
 		$this->session->set_flashdata('registerMessage','Deleted Successfully',':old:');
-		redirect(base_url().'masters/units');
+		redirect(base_url().'masters/Units');
 	}
 
-	public function makeactive($medicineUnitId = 0){
+	public function makeactive($medicineUnitId  = 0){
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$data = array(
 			'isActive'		=>	1
 		);
-		$where = array('medicineUnitId' => $medicineUnitId);
+		$where = array('medicineUnitId' => $medicineUnitId );
 		$this->general_model->update('mst_medicine_units',$data, $where);
 		$this->session->set_flashdata('registerMessage','Status Changed to Active',':old:');
-		redirect(base_url().'masters/units');
+		redirect(base_url().'masters/Units');
 	}
 
 	public function makeinactive($medicineUnitId = 0){
@@ -150,7 +153,7 @@ class Units extends CI_Controller {
 		$where = array('medicineUnitId' => $medicineUnitId);
 		$this->general_model->update('mst_medicine_units',$data, $where);
 		$this->session->set_flashdata('registerMessage','Status Changed to Inactive',':old:');
-		redirect(base_url().'masters/units');
+		redirect(base_url().'masters/Units');
 	}
 
 

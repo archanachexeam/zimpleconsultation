@@ -45,7 +45,7 @@ class Categories extends CI_Controller {
 		$data['singleHeading'] = 'Medicine Categories';
 		$data['pageTitle'] = "Medicine Categories | ".HEX_APPLICATION_NAME;
 
-		$data['loginRedirect']=base_url().'medicines/Categories/insert';
+		$data['loginRedirect']=base_url().'masters/Categories/insert';
 
 		$this->load->view('admin/templates/header',$data);
 		$this->load->view('masters/categories/categories',$data);
@@ -59,7 +59,7 @@ class Categories extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE) {	
 			$this->session->set_flashdata('registerMessage',validation_errors(),':old:');
-			redirect(base_url().'medicines/categories');
+			redirect(base_url().'masters/categories');
 		}else{
 			$data = array(
 				'medicineCategoryName'			=> $this->input->post('medicineCategoryName'),
@@ -67,7 +67,7 @@ class Categories extends CI_Controller {
 			);
 			$this->general_model->insert('mst_medicine_categories',$data);
 			$this->session->set_flashdata('registerMessage','Added Successfully',':old:');
-			redirect(base_url().'medicines/categories');
+			redirect(base_url().'masters/categories');
 		}
 	}
 
@@ -85,10 +85,10 @@ class Categories extends CI_Controller {
 		$data['singleHeading'] = 'Medicine Categories';
 		$data['pageTitle'] = "Medicine Categories | ".HEX_APPLICATION_NAME;
 
-		$data['loginRedirect']=base_url().'medicines/Categories/update';
+		$data['loginRedirect']=base_url().'masters/Categories/update';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('medicines/categories/editCategory',$data);
+		$this->load->view('masters/categories/editCategory',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
@@ -99,7 +99,7 @@ class Categories extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE) {	
 			$this->session->set_flashdata('registerMessage',validation_errors(),':old:');
-			redirect(base_url().'medicines/categories');
+			redirect(base_url().'masters/categories');
 		}else{
 			$data = array(
 				'medicineCategoryName'			=> $this->input->post('medicineCategoryName'),
@@ -109,7 +109,7 @@ class Categories extends CI_Controller {
 			);
 			$this->general_model->update('mst_medicine_categories',$data, $where);
 			$this->session->set_flashdata('registerMessage','Updated Successfully',':old:');
-			redirect(base_url().'medicines/categories');
+			redirect(base_url().'masters/categories');
 		}
 	}
 
@@ -122,7 +122,7 @@ class Categories extends CI_Controller {
 		$where = array('medicineCategoryId' => $medicineCategoryId);
 		$this->general_model->update('mst_medicine_categories',$data, $where);
 		$this->session->set_flashdata('registerMessage','Deleted Successfully',':old:');
-		redirect(base_url().'medicines/categories');
+		redirect(base_url().'masters/categories');
 	}
 
 	public function makeactive($medicineCategoryId = 0){
@@ -134,7 +134,7 @@ class Categories extends CI_Controller {
 		$where = array('medicineCategoryId' => $medicineCategoryId);
 		$this->general_model->update('mst_medicine_categories',$data, $where);
 		$this->session->set_flashdata('registerMessage','Status Changed to Active',':old:');
-		redirect(base_url().'medicines/categories');
+		redirect(base_url().'masters/categories');
 	}
 
 	public function makeinactive($medicineCategoryId = 0){
@@ -146,7 +146,7 @@ class Categories extends CI_Controller {
 		$where = array('medicineCategoryId' => $medicineCategoryId);
 		$this->general_model->update('mst_medicine_categories',$data, $where);
 		$this->session->set_flashdata('registerMessage','Status Changed to Inactive',':old:');
-		redirect(base_url().'medicines/categories');
+		redirect(base_url().'masters/categories');
 	}
 
 

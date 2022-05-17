@@ -3,7 +3,7 @@
 		<div class="col-md-12 col-lg-12">
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title"><?php echo "Edit ".$pageHeading;?></h3>
+					<h3 class="card-title"><?php echo "Add New ".$pageHeading;?></h3>
 				</div>
 				<div class="card-body">
 					<?php 
@@ -13,23 +13,22 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class="form-label">Test Name *</label>
-								<input type="text" class="form-control" name="labTestName" value="<?php echo $singlelabtest[0]['labTestName'];?>" placeholder="Test Name" required="required">
-								<input type="hidden" name="labTestId" value="<?php echo $singlelabtest[0]['labTestId'];?>">
-							</div>
-						</div>
-						<div class="col-md-6">
+								<label class="form-label">Medicine Box Pattern *</label>
+								<input type="text" class="form-control" name="medicine_BoxName" value="<?php echo $singleboxpattern[0]['medicine_BoxName'];?>"placeholder="Medicine Box Pattern" required="required">
+								<input type="hidden" name="medicine_BoxId" value="<?php echo $singleboxpattern[0]['medicine_BoxId'];?>">
+                            </div>
 							<div class="form-group">
-								<label class="form-label">Description *</label>
-								<input type="text" class="form-control" name="labTestDescription" value="<?php echo $singlelabtest[0]['labTestDescription'];?>" placeholder="Description" required="required">
+								<label class="form-label">Medicine Number Per Box *</label>
+								<input type="text" class="form-control" name="medicne_numberPerBox" value="<?php echo $singleboxpattern[0]['medicne_numberPerBox'];?>" placeholder="Medicine Number Per Box" required="required">
 							</div>
 						</div>
+					
 					</div>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group">
 								<div class="form-label"></div>
-								<input type="submit" class="btn btn-primary" name="" value="Update">
+								<input type="submit" class="btn btn-primary" name="" value="Submit">
 							</div>
 						</div>
 					</div>
@@ -56,23 +55,22 @@
 						<table id="example" class="table table-striped table-bordered text-nowrap w-100">
 							<thead>
 								<tr>
-									<th class="wd-15p">Test Name</th>
-									<th class="wd-15p">Description</th>
-									<th class="wd-10p">Status</th>
+									<th class="wd-15p">Medicine Box Pattern </th>
+									<th class="wd-15p">Medicine Number Per Box </th>
+								    <th class="wd-10p">Status</th>
 									<th class="wd-25p">Actions</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
-									if(is_array($labtests)){
-										foreach($labtests as $labtest){
+									if(is_array($boxpattern)){
+										foreach($boxpattern as $boxpatterns){
 								?>
 											<tr>
-												<td><?php echo $labtest['labTestName'];?></td>
-												<td><?php echo $labtest['labTestDescription'];?></td>
+												<td><?php echo $boxpatterns['medicine_BoxName'];?></td>
 												<td>
 		                  	<?php 
-													if($labtest['isActive'] == 1){
+													if($boxpatterns['isActive'] == 1){
 														echo "Active";
 													}else{
 														echo "Inactive";
@@ -81,24 +79,24 @@
 		                  </td>
 											<td>
 												<?php 
-													if($labtest['isActive'] == 1){
+													if($boxpatterns['isActive'] == 1){
 												?>
-														<a href="<?php echo base_url()?>masters/Labtests/makeinactive/<?php echo $labtest['labTestId'];?>" class="btn btn-danger waves-effect waves-light width-md"> 
+														<a href="<?php echo base_url()?>masters/Boxpattern/makeinactive/<?php echo $boxpatterns['medicine_BoxId'];?>" class="btn btn-danger waves-effect waves-light width-md"> 
 															<i class="icon icon-dislike" data-toggle="tooltip" title="Make Inactive"></i> 
 														</a>
 												<?php
 													}else{
 												?>
-														<a href="<?php echo base_url()?>masters/Labtests/makeactive/<?php echo $labtest['labTestId'];?>" class="btn btn-success waves-effect waves-light width-md"> 
+														<a href="<?php echo base_url()?>masters/Boxpattern/makeactive/<?php echo $boxpatterns['medicine_BoxId'];?>" class="btn btn-success waves-effect waves-light width-md"> 
 															<i class="icon icon-like" data-toggle="tooltip" title="Make Active"></i> 
 														</a>
 												<?php
 													}
 												?>
-		                                	<a href="<?php echo base_url()?>masters/Labtests/edit/<?php echo $labtest['labTestId'];?>" class="btn btn-success waves-effect waves-light width-md" title="Edit"> 
+		                  	                    <a href="<?php echo base_url()?>masters/Boxpattern/edit/<?php echo $boxpatterns['medicine_BoxId'];?>" class="btn btn-success waves-effect waves-light width-md" title="Edit"> 
 													<i class="icon icon-note" data-toggle="tooltip" title="Edit"></i> 
 												</a>
-												<a href="<?php echo base_url()?>masters/Labtests/delete/<?php echo $labtest['labTestId'];?>" class="btn btn-danger waves-effect waves-light width-md" title="Delete"> 
+												<a href="<?php echo base_url()?>masters/Boxpattern/delete/<?php echo $boxpatterns['medicine_BoxId'];?>" class="btn btn-danger waves-effect waves-light width-md" title="Delete"> 
 													<i class="icon icon-trash" data-toggle="tooltip" title="Delete"></i> 
 												</a>
 		                  </td>

@@ -124,7 +124,16 @@ class General_Model extends CI_Model {
 		 }
 	 }
 	
-
+   function get_boxpattern()
+   {
+	$this->db->select('medicine_BoxName,medicne_numberPerBox,medicine_BoxId ');
+	$this->db->from('mst_medicine_boxpattern');
+	// $this->db->where('orders.plan_id = newplan.id' );
+	
+	$rs=$this->db->get();
+	$data=$rs->result();
+	return $data; 
+   }
 	function get_combined_list($id_field_name="",$value_field_name1="",$value_field_name2="",$value_field_name3="",$table_name="",$init_list=array(),$where=array()){
 
 		$this->db->select($id_field_name);
@@ -335,6 +344,26 @@ class General_Model extends CI_Model {
 			return false;
 		}
 	}
+		// Check Admin Login
+		function check_pharmacy_login($userName='',$userPassword='')
+		{
+			$where = array(
+				'pharmacyName' 		=> $userName,
+				'pharmacyPassword' 	=> md5($userPassword),
+				'isActive'				=> 1,
+				'isDeleted'				=> 0
+			);
+			$records = $this->get('mst_pharmacies',$where);
+			
+			if($records != false)
+			{//if email id and password available in db return true
+				return $records[0];
+			}
+			else
+			{// else return false
+				return false;
+			}
+		}
 
 	// Check Admin Login
 	function check_frontoffice_login($userName='',$userPassword='')

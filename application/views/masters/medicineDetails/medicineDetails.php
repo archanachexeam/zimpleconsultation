@@ -183,21 +183,56 @@
 												<?php 
 													if($medicine['isActive'] == 1){
 												?>
+												        <?php
+														if($this->session->userdata('logged_in_type') == "admin")
+														{
+															?>
 														<a href="<?php echo base_url()?>masters/medicineDetails/makeinactive/<?php echo $medicine['medicineId'];?>" class="btn btn-danger waves-effect waves-light width-md"> 
 															<i class="icon icon-dislike" data-toggle="tooltip" title="Make Inactive"></i> 
 														</a>
+														<?php
+														}
+														if($this->session->userdata('logged_in_type') == "pharmacy")
+														{
+															?>
+															<a href="<?php echo base_url()?>medicines/medicineDetails/makeinactive/<?php echo $medicine['medicineId'];?>" class="btn btn-danger waves-effect waves-light width-md"> 
+															<i class="icon icon-dislike" data-toggle="tooltip" title="Make Inactive"></i> 
+														</a>
+														<?php
+														}
+														?>
 												<?php
 													}else{
+														if($this->session->userdata('logged_in_type') == "admin")
+														{
 												?>
 														<a href="<?php echo base_url()?>masters/medicineDetails/makeactive/<?php echo $medicine['medicineId'];?>" class="btn btn-success waves-effect waves-light width-md"> 
 															<i class="icon icon-like" data-toggle="tooltip" title="Make Active"></i> 
 														</a>
 												<?php
 													}
+													if($this->session->userdata('logged_in_type') == "pharmacy")
+													{
 												?>
+												<a href="<?php echo base_url()?>medicines/medicineDetails/makeactive/<?php echo $medicine['medicineId'];?>" class="btn btn-success waves-effect waves-light width-md"> 
+															<i class="icon icon-like" data-toggle="tooltip" title="Make Active"></i> 
+														</a>
+														<?php
+													}
+													?>
+													<?php
+													if($this->session->userdata('logged_in_type') == "admin")
+													{
+														?>
 		                  	                    <a href="<?php echo base_url()?>masters/medicineDetails/edit/<?php echo $medicine['medicineId'];?>" class="btn btn-success waves-effect waves-light width-md" title="Edit"> 
 													<i class="icon icon-note" data-toggle="tooltip" title="Edit"></i> 
 												</a>
+												<?php
+													}
+													if($this->session->userdata('logged_in_type') == "admin")
+													{
+														?>
+
 												<a href="<?php echo base_url()?>masters/medicineDetails/delete/<?php echo $medicine['medicineId'];?>" class="btn btn-danger waves-effect waves-light width-md" title="Delete"> 
 													<i class="icon icon-trash" data-toggle="tooltip" title="Delete"></i> 
 												</a>

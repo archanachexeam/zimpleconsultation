@@ -35,7 +35,7 @@ class Units extends CI_Controller {
 
 	public function index()
 	{
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
 
 		$where = array('isDeleted' => 0);
 		$data['units'] =$this->general_model->get('mst_medicine_units',$where);
@@ -48,12 +48,12 @@ class Units extends CI_Controller {
 		$data['loginRedirect']=base_url().'medicines/units/insert';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('medicines/units/units',$data);
+		$this->load->view('masters/units/units',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
 	public function insert(){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
 
 		$this->form_validation->set_rules('medicineUnitName','Unit Name','required');
 		$this->form_validation->set_rules('medicineUnitSF','Unit Short Form','required');
@@ -69,13 +69,12 @@ class Units extends CI_Controller {
 			);
 			$this->general_model->insert('mst_medicine_units',$data);
 			$this->session->set_flashdata('registerMessage','Added Successfully',':old:');
-			redirect(base_url().'medicines/units');
+			redirect(base_url().'masters/units');
 		}
 	}
 
 	public function edit($medicineUnitId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
-
+			if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
 		$where = array('mst_medicine_units.isDeleted' => 0);
 		$data['units'] =$this->general_model->get('mst_medicine_units',$where);
 
@@ -90,12 +89,13 @@ class Units extends CI_Controller {
 		$data['loginRedirect']=base_url().'medicines/units/update';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('medicines/units/editUnit',$data);
+		$this->load->view('masters/units/editUnit',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
 	public function update(){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
+
 
 		$this->form_validation->set_rules('medicineUnitName','Unit Name','required');
 		$this->form_validation->set_rules('medicineUnitSF','Unit Short Form','required');
@@ -118,7 +118,8 @@ class Units extends CI_Controller {
 	}
 
 	public function delete($medicineUnitId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
+
 
 		$data = array(
 			'isDeleted'		=>	1
@@ -130,7 +131,8 @@ class Units extends CI_Controller {
 	}
 
 	public function makeactive($medicineUnitId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
+
 
 		$data = array(
 			'isActive'		=>	1
@@ -142,7 +144,8 @@ class Units extends CI_Controller {
 	}
 
 	public function makeinactive($medicineUnitId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
+
 
 		$data = array(
 			'isActive'		=>	0

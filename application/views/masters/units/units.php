@@ -13,14 +13,14 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class="form-label">Unit Name *</label>
-								<input type="text" class="form-control" name="medicineUnitName" placeholder="Unit Name" required="required">
+								<label class="form-label">Medicine Name *</label>
+								<input type="text" class="form-control" name="medicineUnitName" placeholder="Medicine Name" required="required">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class="form-label">Unit Symbol *</label>
-								<input type="text" class="form-control" name="medicineUnitSF" placeholder="Unit Symbol" required="required">
+								<label class="form-label">Medicine Symbol *</label>
+								<input type="text" class="form-control" name="medicineUnitSF" placeholder="Medicine Symbol" required="required">
 							</div>
 						</div>
 					</div>
@@ -55,8 +55,8 @@
 						<table id="example" class="table table-striped table-bordered text-nowrap w-100">
 							<thead>
 								<tr>
-									<th class="wd-15p">Unit Name</th>
-									<th class="wd-15p">Unit Symbol</th>
+									<th class="wd-15p">Medicine Name</th>
+									<th class="wd-15p">Medicine Symbol</th>
 									<th class="wd-10p">Status</th>
 									<th class="wd-25p">Actions</th>
 								</tr>
@@ -80,26 +80,94 @@
 		                  </td>
 											<td>
 												<?php 
-													if($unit['isActive'] == 1){
+													if($unit['isActive'] == 1)
+													{
 												?>
-														<a href="<?php echo base_url()?>masters/units/makeinactive/<?php echo $unit['medicineUnitId'];?>" class="btn btn-danger waves-effect waves-light width-md"> 
+												<?php
+												     	if($this->session->userdata('logged_in_type') == "admin")
+														 {
+														 ?>
+														<a href="<?php echo base_url()?>masters/Units/makeinactive/<?php echo $unit['medicineUnitId'];?>" class="btn btn-danger waves-effect waves-light width-md"> 
 															<i class="icon icon-dislike" data-toggle="tooltip" title="Make Inactive"></i> 
 														</a>
-												<?php
-													}else{
-												?>
-														<a href="<?php echo base_url()?>masters/units/makeactive/<?php echo $unit['medicineUnitId'];?>" class="btn btn-success waves-effect waves-light width-md"> 
+														<?php
+														 }
+														
+														 elseif($this->session->userdata('logged_in_type') == "pharmacy")
+														 {
+														 ?>
+														<a href="<?php echo base_url()?>medicines/Units/makeinactive/<?php echo $unit['medicineUnitId'];?>" class="btn btn-danger waves-effect waves-light width-md"> 
+															<i class="icon icon-dislike" data-toggle="tooltip" title="Make Inactive"></i> 
+														</a>
+														<?php
+														 }
+														 ?>
+												  <?php
+													}
+													else
+													{
+												?>      
+												        	<?php
+												     	if($this->session->userdata('logged_in_type') == "admin")
+														 {
+														 ?>
+														<a href="<?php echo base_url()?>masters/Units/makeactive/<?php echo $unit['medicineUnitId'];?>" class="btn btn-success waves-effect waves-light width-md"> 
 															<i class="icon icon-like" data-toggle="tooltip" title="Make Active"></i> 
 														</a>
+														<?php
+														 }
+														 if($this->session->userdata('logged_in_type') == "pharmacy")
+														 {
+														 ?>
+														<a href="<?php echo base_url()?>medicines/Units/makeactive/<?php echo $unit['medicineUnitId'];?>" class="btn btn-success waves-effect waves-light width-md"> 
+															<i class="icon icon-like" data-toggle="tooltip" title="Make Active"></i> 
+														</a>
+														<?php
+														 }
+														 ?>
+														 
+
 												<?php
 													}
 												?>
-		                  	                    <a href="<?php echo base_url()?>masters/units/edit/<?php echo $unit['medicineUnitId'];?>" class="btn btn-success waves-effect waves-light width-md" title="Edit"> 
-													<i class="icon icon-note" data-toggle="tooltip" title="Edit"></i> 
-												</a>
-												<a href="<?php echo base_url()?>masters/units/delete/<?php echo $unit['medicineUnitId'];?>" class="btn btn-danger waves-effect waves-light width-md" title="Delete"> 
+												       
+													   <?php
+												     	if($this->session->userdata('logged_in_type') == "admin")
+														 {
+														 ?>
+		                  								<a href="<?php echo base_url()?>masters/Units/edit/<?php echo $unit['medicineUnitId'];?>" class="btn btn-success waves-effect waves-light width-md" title="Edit"> 
+															<i class="icon icon-note" data-toggle="tooltip" title="Edit"></i> 
+														</a>
+														<?php
+														 }
+														
+														  if($this->session->userdata('logged_in_type') == "pharmacy")
+														 {
+														 ?>
+														 	<a href="<?php echo base_url()?>medicines/Units/edit/<?php echo $unit['medicineUnitId'];?>" class="btn btn-success waves-effect waves-light width-md" title="Edit"> 
+															<i class="icon icon-note" data-toggle="tooltip" title="Edit"></i> 
+														</a>
+														<?php
+														 }
+														
+														   if($this->session->userdata('logged_in_type') == "admin")
+														 {
+														 ?>
+												<a href="<?php echo base_url()?>masters/Units/delete/<?php echo $unit['medicineUnitId'];?>" class="btn btn-danger waves-effect waves-light width-md" title="Delete"> 
 													<i class="icon icon-trash" data-toggle="tooltip" title="Delete"></i> 
 												</a>
+												<?php
+														 }
+														 if($this->session->userdata('logged_in_type') == "pharmacy")
+														 {
+														 ?>
+														 <a href="<?php echo base_url()?>medicines/Units/delete/<?php echo $unit['medicineUnitId'];?>" class="btn btn-danger waves-effect waves-light width-md" title="Delete"> 
+													<i class="icon icon-trash" data-toggle="tooltip" title="Delete"></i> 
+												</a>
+												<?php
+														 }
+														 ?>
+
 		                  </td>
 											</tr>
 								<?php

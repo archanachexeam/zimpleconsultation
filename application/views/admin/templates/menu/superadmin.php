@@ -136,9 +136,10 @@
           <li class="slide">
           <a class="side-menu__item" href="<?php echo base_url().'index.php/masters/Manufacturers/'?>">
             <i class="side-menu__icon fa fa-square"></i>
-            <span class="side-menu__label"><?php echo $this->lang->line('Medicine Type'); ?>Medicine Type</span>
+            <span class="side-menu__label"><?php echo $this->lang->line('Medicine Manufacturers'); ?>Medicine Manufacturers</span>
           </a>
           </li>
+        
       </ul>
       </li>
    

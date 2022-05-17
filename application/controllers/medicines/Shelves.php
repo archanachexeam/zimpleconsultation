@@ -35,7 +35,7 @@ class Shelves extends CI_Controller {
 
 	public function index()
 	{
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
 
 		$where = array('isDeleted' => 0);
 		$data['shelves'] =$this->general_model->get('mst_medicine_shelves',$where);
@@ -48,12 +48,12 @@ class Shelves extends CI_Controller {
 		$data['loginRedirect']=base_url().'medicines/Shelves/insert';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('medicines/shelves/shelves',$data);
+		$this->load->view('masters/shelves/shelves',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
 	public function insert(){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
 
 		$this->form_validation->set_rules('medicineShelfName','Shelf Name','required');
 
@@ -72,7 +72,8 @@ class Shelves extends CI_Controller {
 	}
 
 	public function edit($medicineShelfId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
+
 
 		$where = array('mst_medicine_shelves.isDeleted' => 0);
 		$data['shelves'] =$this->general_model->get('mst_medicine_shelves',$where);
@@ -88,12 +89,13 @@ class Shelves extends CI_Controller {
 		$data['loginRedirect']=base_url().'medicines/Shelves/update';
 
 		$this->load->view('admin/templates/header',$data);
-		$this->load->view('medicines/shelves/editType',$data);
+		$this->load->view('masters/shelves/editType',$data);
 		$this->load->view('admin/templates/footer');
 	}
 
 	public function update(){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
+
 
 		$this->form_validation->set_rules('medicineShelfName','Shelf Name','required');
 
@@ -114,7 +116,8 @@ class Shelves extends CI_Controller {
 	}
 
 	public function delete($medicineShelfId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
+
 
 		$data = array(
 			'isDeleted'		=>	1
@@ -126,7 +129,8 @@ class Shelves extends CI_Controller {
 	}
 
 	public function makeactive($medicineShelfId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
+
 
 		$data = array(
 			'isActive'		=>	1
@@ -138,7 +142,8 @@ class Shelves extends CI_Controller {
 	}
 
 	public function makeinactive($medicineShelfId = 0){
-		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
+		if($this->session->userdata('logged_in_type') != "pharmacy") { redirect(base_url().'pharmacy/login');	}
+
 
 		$data = array(
 			'isActive'		=>	0

@@ -19,6 +19,7 @@ class Labtests extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
+
 	function __construct() {
 		parent::__construct();
 
@@ -73,7 +74,8 @@ class Labtests extends CI_Controller {
 		}
 	}
 
-	public function edit($labTestId = 0){
+	public function edit($labTestId = 0)
+	{
 		if($this->session->userdata('logged_in_type') != "admin") { redirect(base_url().'admin/login');	}
 
 		$where = array('mst_basic_lab_tests.isDeleted' => 0);
